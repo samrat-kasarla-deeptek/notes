@@ -86,12 +86,17 @@ Example configuration:
     "run_as_user": "root"
   },
   "metrics": {
+    "namespace": "CWAgent",
+    "append_dimensions": {
+      "InstanceId": "${aws:InstanceId}",
+      "ImageId": "${aws:ImageId}",
+      "InstanceType": "${aws:InstanceType}"
+    },
     "metrics_collected": {
       "mem": {
         "measurement": [
           "mem_used_percent"
-        ],
-        "metrics_collection_interval": 60
+        ]
       },
       "disk": {
         "measurement": [
@@ -99,8 +104,7 @@ Example configuration:
         ],
         "resources": [
           "*"
-        ],
-        "metrics_collection_interval": 60
+        ]
       }
     }
   },
